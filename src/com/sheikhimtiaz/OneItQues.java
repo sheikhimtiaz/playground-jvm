@@ -1,6 +1,7 @@
 package com.sheikhimtiaz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class OneItQues {
     public static void run(){
@@ -9,7 +10,8 @@ public class OneItQues {
 //        seriesSum(testCases);
 //        learnKeywords();
         char[] chars = {'a','a','b'};
-        removeDuplicates(chars);
+//        removeDuplicates(chars);
+        System.out.println(removeDuplicates(chars));
     }
 
 
@@ -21,45 +23,20 @@ public class OneItQues {
         System.out.println("End");
     }
 
-    public static void removeDuplicates (char[] arg) {
+    public static char[] removeDuplicates (char[] arg) {
         LinkedHashSet<Character> mySet = new LinkedHashSet<Character>();
         for(char ch:arg){
-            if(ch!=' '){
+            if(ch!=' ' && !mySet.contains(ch)){
                 mySet.add(ch);
             }
         }
-        System.out.println(mySet);
         char[] result = new char[mySet.size()];
-        int i = 0;
-        for(Character c:mySet){
-            result[i] = c; i++;
+        int count = 0;
+        for(char ch:mySet){
+            result[count] = ch;
+            count++;
         }
-        System.out.println(result);
-
-
-        LinkedHashSet<Character>
-                set = new LinkedHashSet<Character>();
-
-        // Use add() method to add
-        // elements into the LinkedHashSet
-        set.add('a');
-        set.add('a');
-        set.add('b');
-        set.add('b');
-        set.add('c');
-
-        // Displaying the LinkedHashSet
-        System.out.println("The LinkedHashSet: "
-                + set);
-
-        // Creating the array and using toArray()
-        Character[] arr = new Character[set.size()];
-        arr = set.toArray(arr);
-
-        // Displaying arr
-        System.out.println("The arr[] is:");
-        for (int j = 0; j < arr.length; j++)
-            System.out.println(arr[j]);
+        return result;
     }
 
     public static void wordCount(String str){

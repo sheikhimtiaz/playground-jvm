@@ -22,8 +22,22 @@ public class Main {
 
 //        ReplaceIfSwitchStatements.run();
 
-        FacebookHackerCup.run();
+//        FacebookHackerCup.run();
+
+//        CoderByteTest.run();
+
+//        CodilityDemo.run();
+
+//        FuturePractice.run();
+
+//        FastReadWriteInJava.run();
+
+//        ToptalTest.run();
+
+//        bKashTest.run();
     }
+
+
 
 //    @Test
 //    public void shouldReturnHelloWorld(){

@@ -6,13 +6,13 @@ import java.util.function.Function;
 
 public class DataTypesAndSyntax {
     public static void run(){
-//        testStrings();
+        testStrings();
 //
 //        testPassByRef();
 //
 //        testLambdaFunction();
 
-        testFinalAndEnum();
+//        testFinalAndEnum();
     }
 
     private static void testLambdaFunction(){
