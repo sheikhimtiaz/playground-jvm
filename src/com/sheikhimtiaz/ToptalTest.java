@@ -1,5 +1,9 @@
 package com.sheikhimtiaz;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class ToptalTest {
 
 
@@ -10,6 +14,25 @@ public class ToptalTest {
             System.out.println(item);
         }
 
+    }
+
+    public static long arrayManipulation(int n, List<List<Integer>> queries) {
+        // List<Integer> array = new ArrayList<Integer>();
+        // IntStream.range(1, n).forEach(i -> {
+        //     array.add(0);
+        // });
+        ArrayList<Integer> intlist = new ArrayList<Integer>(Collections.nCopies(n, 0));
+        Integer result = 0;
+        for(int i=0;i<intlist.size();i++){
+            for(int j=0;j<queries.size();j++){
+                if((i+1)>= queries.get(j).get(0) && (i+1)<=queries.get(j).get(1)){
+                    Integer temp = intlist.get(i)+queries.get(j).get(2);
+                    if(result< temp) result =temp;
+                    intlist.set(i, temp);
+                }
+            }
+        }
+        return (long)result;
     }
 
 

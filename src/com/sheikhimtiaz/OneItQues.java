@@ -1,7 +1,6 @@
 package com.sheikhimtiaz;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class OneItQues {
     public static void run(){
