@@ -1,5 +1,7 @@
 package com.sheikhimtiaz;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 
 public class Main {
@@ -7,11 +9,13 @@ public class Main {
     public static void main(char[] args){
         System.out.println("a");
     }
-
+    int val = 10;
 //    static {
 //        System.out.println("test");
 //    }
     public static void main(String[] args) {
+//        Main main = new Main();
+//        System.out.println(main.val);
 //        if(num<3){
 //            num++;
 //            main(null);
@@ -49,8 +53,20 @@ public class Main {
 
 //        HashMapSort.run();
 
-        TuringTest.run();
+//        TuringTest.run();
+
+        Hackerrank.run();
+
+//        LeetCode.run();
+
+//        try {
+//            SocketClient.run();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        ;
     }
+
 
 
 
