@@ -11,37 +11,7 @@ public class Hackerrank {
         System.out.println(powerSum(100,2));
         System.out.println(Solve(6));
         System.out.println(Solve(28));
-        System.out.println(maxOperationOfReducingOne(5,6,7)); // not expected output
-        System.out.println(maxOperationOfReducingOne(2,3,4)); // not expected output
-        //
     }
-
-    private static long maxOperationOfReducingOne(long a, long b, long c){
-        // NOT_SOLVED_YET
-        long result=0;
-        if(a==b) return a;
-        if(c==b) return b;
-        if(a==c) return c;
-
-        if(a>b){
-            long temp = a;
-            a = b;
-            b = temp;
-        }
-        if(b>c){
-            long temp = c;
-            c = b;
-            b = temp;
-        }
-        if(a>c){
-            long temp = a;
-            a = c;
-            c = temp;
-        }
-
-        return a + ( (c-a) < b ? c-a : b );
-    }
-
 
     static String Solve(int N){
         // Write your code here
