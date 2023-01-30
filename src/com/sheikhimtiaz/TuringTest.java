@@ -5,14 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 public class TuringTest {
 
     public static void run() {
         double nth = Math.pow(625, 1.0 / 4.0);
         System.out.println(nth);
-        assertEquals(5, nth, 0.00001);
+//        assertEquals(5, nth, 0.00001);
 
         int n=3;
         char[] str = new char[2*n];

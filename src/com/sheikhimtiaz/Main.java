@@ -1,8 +1,10 @@
 package com.sheikhimtiaz;
 
+import com.sheikhimtiaz.customannotations.Foobar;
+
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 public class Main {
     public static int num = 0;
@@ -55,7 +57,9 @@ public class Main {
 
 //        TuringTest.run();
 
-        Hackerrank.run();
+//        Hackerrank.run();
+
+        Foobar.run();
 
 //        LeetCode.run();
 
