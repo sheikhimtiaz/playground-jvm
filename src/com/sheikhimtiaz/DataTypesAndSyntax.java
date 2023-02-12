@@ -1,18 +1,24 @@
 package com.sheikhimtiaz;
 
+import com.sheikhimtiaz.datatypes.VehicleSize;
+
 import java.util.*;
 import java.util.function.Function;
 
 
 public class DataTypesAndSyntax {
     public static void run(){
-        testStrings();
+//        testStrings();
 //
 //        testPassByRef();
 //
 //        testLambdaFunction();
 
 //        testFinalAndEnum();
+
+//        System.out.println("Compact".equals(VehicleSize.Compact.toString()));
+//        System.out.println(VehicleSize.valueOf("Compact"));
+//        System.out.println(Arrays.stream(VehicleSize.values()).toList());
     }
 
     private static void testLambdaFunction(){

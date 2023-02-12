@@ -49,9 +49,11 @@ public class Foobar {
 //        System.out.println(res);
 //        System.out.println(dontGetVolunteered(19, 36));
 
-        System.out.println(enRouteSalute("--->-><-><-->-"));
-        System.out.println(enRouteSalute(">----<"));
-        System.out.println(enRouteSalute("<<>><"));
+//        System.out.println(enRouteSalute("--->-><-><-->-"));
+//        System.out.println(enRouteSalute(">----<"));
+//        System.out.println(enRouteSalute("<<>><"));
+
+
     }
 
     public static int enRouteSalute(String s) {
@@ -127,6 +129,18 @@ public class Foobar {
             System.out.print(myArr[i]);
         }
         System.out.println("");
+    }
+
+    public static void printArrayChar(char myArr[]){
+        for(int i=0; i<myArr.length; i++){
+            if(i != 0) System.out.print(", ");
+            System.out.print(myArr[i]);
+        }
+        System.out.println("");
+    }
+    public static void printArrayChar(char myArr[], String title){
+        System.out.print(title + " -> ");
+        printArrayChar(myArr);
     }
 
     public static int[] solarDoomsDaySolution(int area) {

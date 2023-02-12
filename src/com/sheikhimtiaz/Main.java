@@ -1,5 +1,6 @@
 package com.sheikhimtiaz;
 
+import com.sheikhimtiaz.basicpractice.*;
 import com.sheikhimtiaz.customannotations.Foobar;
 
 import java.io.IOException;
@@ -59,9 +60,19 @@ public class Main {
 
 //        Hackerrank.run();
 
-        Foobar.run();
+//        Foobar.run();
 
-//        LeetCode.run();
+        LeetCode.run();
+
+//        SamplePracticeProblem.run();
+
+//        MyHashMap.testHashMap();
+
+//        LinkedListFromArray.run();
+
+//        CircularQueue.run();
+
+//        StreamPractice.run();
 
 //        try {
 //            SocketClient.run();

@@ -7,7 +7,7 @@ import java.util.List;
 public class Hackerrank {
 
     public static void run() {
-        System.out.println(reverseArray(new ArrayList<Integer>(Arrays.asList(1,2,3,4,5))));
+        System.out.println(reverseArray(Arrays.asList(1,2,3,4,5)));
         System.out.println(powerSum(100,2));
         System.out.println(Solve(6));
         System.out.println(Solve(28));
