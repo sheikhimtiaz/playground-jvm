@@ -55,7 +55,7 @@ public class Main {
 
 //        TuringTest.run();
 
-        Hackerrank.run();
+//        Hackerrank.run();
 
 //        LeetCode.run();
 
@@ -64,7 +64,8 @@ public class Main {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        ;
+
+        GoogleOnlineChallenge.run();
     }
 
 
