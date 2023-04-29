@@ -62,7 +62,9 @@ public class Main {
 
 //        Foobar.run();
 
-        LeetCode.run();
+//        LeetCode.run();
+
+        PrampPractice.run();
 
 //        SamplePracticeProblem.run();
 

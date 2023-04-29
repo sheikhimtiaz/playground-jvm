@@ -74,8 +74,9 @@ public class LeetCode {
 
 //        System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
 
-        System.out.println(characterReplacement("ABAB", 2));
+//        System.out.println(characterReplacement("ABAB", 2));
 
+        System.out.println(~5);
     }
 
 
