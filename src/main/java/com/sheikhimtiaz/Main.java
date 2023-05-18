@@ -2,6 +2,7 @@ package com.sheikhimtiaz;
 
 import com.sheikhimtiaz.basicpractice.*;
 import com.sheikhimtiaz.customannotations.Foobar;
+import com.sheikhimtiaz.reactor.ReactorPractice;
 
 import java.io.IOException;
 
@@ -65,7 +66,7 @@ public class Main {
 
 //        LeetCode.run();
 
-        PrampPractice.run();
+//        PrampPractice.run();
 
 //        SamplePracticeProblem.run();
 
@@ -83,7 +84,10 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-        GoogleOnlineChallenge.run();
+//        GoogleOnlineChallenge.run();
+
+        ReactorPractice.run();
+
     }
 
 
