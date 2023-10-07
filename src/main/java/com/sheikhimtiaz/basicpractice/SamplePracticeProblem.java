@@ -1,13 +1,13 @@
 package com.sheikhimtiaz.basicpractice;
 
-import com.sheikhimtiaz.customannotations.Foobar;
+import com.sheikhimtiaz.FoobarChallenge;
 
 public class SamplePracticeProblem {
 
     public static void run() {
         int[] arr1 = {1,2,4,7,8};
         int[] arr2 = {3,5,6,9,14};
-        Foobar.printArray(mergeTwoSortedArray(arr1,arr2));
+        FoobarChallenge.printArray(mergeTwoSortedArray(arr1,arr2));
     }
 
     public static int[] mergeTwoSortedArray(int[] arr1, int[] arr2) {

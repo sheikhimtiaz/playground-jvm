@@ -13,6 +13,26 @@ public class Hackerrank {
         System.out.println(Solve(28));
     }
 
+    private static int combinationOf(int n, int r) {
+        int result = 1;
+        for(int i=n;i>(n-r);i--){
+            result = result * i;
+        }
+        for(int i=r;i>0;i--){
+            result /= i;
+        }
+        return result;
+    }
+    public static int countTeams(List<Integer> skills, int minPlayers, int minLevel, int maxLevel) {
+        int result = 0;
+        int legitPlayers = (int)skills.stream().filter(item-> item>=minLevel && item<=maxLevel).count();
+        for(int i=minPlayers;i<=legitPlayers;i++){
+            result += combinationOf(legitPlayers, i);
+        }
+        return result;
+    }
+
+
     static String Solve(int N){
         // Write your code here
         int result = 1;

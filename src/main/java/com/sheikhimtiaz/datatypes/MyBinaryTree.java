@@ -1,4 +1,4 @@
-package com.sheikhimtiaz.basicpractice;
+package com.sheikhimtiaz.datatypes;
 
 public class MyBinaryTree {
 

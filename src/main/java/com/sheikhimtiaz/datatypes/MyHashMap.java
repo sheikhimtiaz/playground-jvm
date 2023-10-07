@@ -1,4 +1,4 @@
-package com.sheikhimtiaz.basicpractice;
+package com.sheikhimtiaz.datatypes;
 
 import com.sheikhimtiaz.exceptions.InvalidIndexException;
 
@@ -117,48 +117,10 @@ public class MyHashMap<K, V> {
             System.out.println("Key Six -> " + stringHashMap.get("Six"));
             System.out.println("Key Tow -> " + stringHashMap.get("Tow"));
             System.out.println("Key Nine -> " + stringHashMap.get("Nine"));
+            stringHashMap.remove("Six");
         } catch (InvalidIndexException e) {
             e.printStackTrace();
         }
     }
 }
 
-class MyHashMapNode<K, V> {
-
-    private K key;
-    private V value;
-    private MyHashMapNode<K, V> next;
-    private long hashCode;
-
-    public K getKey() {
-        return key;
-    }
-
-    public void setKey(K key) {
-        this.key = key;
-    }
-
-    public V getValue() {
-        return value;
-    }
-
-    public void setValue(V value) {
-        this.value = value;
-    }
-
-    public MyHashMapNode<K, V> getNext() {
-        return next;
-    }
-
-    public void setNext(MyHashMapNode<K, V> next) {
-        this.next = next;
-    }
-
-    public long getHashCode() {
-        return hashCode;
-    }
-
-    public void setHashCode(long hashCode) {
-        this.hashCode = hashCode;
-    }
-}

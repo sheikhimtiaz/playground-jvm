@@ -1,4 +1,8 @@
-package com.sheikhimtiaz.customannotations;
+package com.sheikhimtiaz.datatypes;
+
+import com.sheikhimtiaz.customannotations.Init;
+import com.sheikhimtiaz.customannotations.JsonElement;
+import com.sheikhimtiaz.customannotations.JsonSerializable;
 
 @JsonSerializable
 public class Person {

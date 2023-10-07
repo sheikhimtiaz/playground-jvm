@@ -1,6 +1,6 @@
 package com.sheikhimtiaz.basicpractice;
 
-import com.sheikhimtiaz.customannotations.Foobar;
+import com.sheikhimtiaz.FoobarChallenge;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ public class StreamPractice {
         System.out.println(Arrays.stream(simpleArray).sum());
         System.out.println(Arrays.stream(simpleArray).max());
         System.out.println(Arrays.stream(simpleArray).max().getAsInt());
-        Foobar.printArray(Arrays.stream(simpleArray).sorted().toArray());
+        FoobarChallenge.printArray(Arrays.stream(simpleArray).sorted().toArray());
         System.out.println(Arrays.stream(simpleArray).map(item -> item*2).mapToObj(item -> "N"+item).toList());
         var sth = Arrays.stream(simpleArray).map(item -> item*2).mapToObj(item -> "N"+item).toArray();
         var sth2 = Arrays.asList(simpleArray).stream().map(i -> i.toString()).toList();

@@ -1,40 +1,12 @@
-package com.sheikhimtiaz.customannotations;
+package com.sheikhimtiaz;
 
+
+import com.sheikhimtiaz.datatypes.Pair;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-class Pair{
-    int x,y;
-    Pair(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-
-    @Override
-    public String toString() {
-        return "X: " + this.x + ", Y: " + this.y;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-
-        if (!(obj instanceof Pair)) {
-            return false;
-        }
-
-        Pair c = (Pair) obj;
-
-        return x == c.x && y == c.y;
-    }
-}
-public class Foobar {
-
+public class FoobarChallenge {
 
     public static void run() {
 //        Level 1 problem - solar doomsday
@@ -52,8 +24,23 @@ public class Foobar {
 //        System.out.println(enRouteSalute("--->-><-><-->-"));
 //        System.out.println(enRouteSalute(">----<"));
 //        System.out.println(enRouteSalute("<<>><"));
+//        System.out.println(17^18^19^20^21^22^23^25^26^29);
+//        System.out.println(queueToDo(17,4));
+//        System.out.println(queueToDo(0,3));
+    }
 
-
+    public static int queueToDo(int start, int length){
+        int result = 0, it = length;
+        for(int i=0;i<length;i++){
+            for(int j=0;j<length;j++){
+                if(j<it){
+                    result = result ^ start;
+                }
+                start++;
+            }
+            it--;
+        }
+        return result;
     }
 
     public static int enRouteSalute(String s) {

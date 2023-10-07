@@ -1,11 +1,5 @@
 package com.sheikhimtiaz;
 
-import com.sheikhimtiaz.basicpractice.*;
-import com.sheikhimtiaz.customannotations.Foobar;
-import com.sheikhimtiaz.reactor.ReactorPractice;
-
-import java.io.IOException;
-
 //import static org.junit.Assert.assertEquals;
 
 public class Main {
@@ -62,7 +56,7 @@ public class Main {
 //        Hackerrank.run();
 //        Hackerrank.run();
 
-//        Foobar.run();
+        FoobarChallenge.run();
 
 //        LeetCode.run();
 
@@ -86,7 +80,9 @@ public class Main {
 
 //        GoogleOnlineChallenge.run();
 
-        ReactorPractice.run();
+//        ReactorPractice.run();
+
+//        MonoPractice.run();
 
     }
 

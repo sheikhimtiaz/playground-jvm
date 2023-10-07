@@ -1,9 +1,5 @@
 package com.sheikhimtiaz;
 
-import com.sheikhimtiaz.customannotations.Foobar;
-
-import java.util.Arrays;
-
 public class bKashTest {
 
     public static void run(){

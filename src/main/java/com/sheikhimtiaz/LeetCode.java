@@ -1,8 +1,5 @@
 package com.sheikhimtiaz;
 
-import com.sheikhimtiaz.customannotations.Foobar;
-import com.sheikhimtiaz.datatypes.VehicleSize;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
