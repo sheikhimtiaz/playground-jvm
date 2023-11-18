@@ -31,7 +31,8 @@ public class LeetCode {
 //        int[] nums = {1,1,1,2,2,3}; int k = 2;
 //        Foobar.printArray(topKFrequent(nums, k));
 
-//        Foobar.printArray(productExceptSelf(new int[]{-1,1,0,-3,3}));
+//        FoobarChallenge.printArray(productExceptSelf(new int[]{1,2,3,4}));
+//        FoobarChallenge.printArray(productExceptSelf(new int[]{-1,1,0,-3,3}));
 
 //        System.out.println(isValidSudoku(new char[][]{{'5','3','.','.','7','.','.','.','.'}
 //                ,{'6','.','.','1','9','5','.','.','.'}
@@ -73,9 +74,123 @@ public class LeetCode {
 
 //        System.out.println(characterReplacement("ABAB", 2));
 
-        System.out.println(~5);
+//        System.out.println(~5);
+//        System.out.println(reverseWords("hello world"));
+//        System.out.println(increasingTriplet(new int[]{2,1,5,1,4}));
+
+//        System.out.println(reverseVowels("hello world"));
+//        System.out.println(reverseVowels("leetcode"));
+//        System.out.println(compress(new char[]{'a','a','b','b','c','c','c'}));
+//        System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b','b','b'}));
+//        System.out.println(maxOperations(new int[]{1,2,3,4}, 5));
+//        System.out.println(maxOperations(new int[]{3,1,3,4,3}, 6));
+
+        int strike = 535;
+        char[] chars = new char[]{0,0,0};
+        int index = 0;
+        for(char c:String.valueOf(strike).toCharArray()){
+            chars[index++] = c;
+        }
+        FoobarChallenge.printArrayChar(chars);
+        index = 0;
+        char[] chars2 = new char[]{0,0,0};
+        for(char c:String.valueOf(strike).toCharArray()){
+            chars2[index++] = c;
+            strike /= 10;
+        }
+        FoobarChallenge.printArrayChar(chars2);
     }
 
+    public static int maxOperations(int[] nums, int k) {
+        int total = 0, start=0, end=nums.length-1;
+        Arrays.sort(nums);
+        while(start<end){
+            if(nums[start] + nums[end] == k){
+                start++; end--; total++;
+            }
+            else if(nums[start] + nums[end] < k) {
+                start++;
+            }
+            else end--;
+        }
+        return total;
+    }
+
+    public static int compress(char[] chars) {
+        int len = chars.length;
+        int strike = 1, index = 1;
+        if(len == 1) return 1;
+        for(int i=1;i<len;i++){
+            if(chars[i]==chars[i-1]){
+                strike++;
+            }
+            else if(chars[i]!=chars[i-1] && strike!=1){
+                for(char c:String.valueOf(strike).toCharArray()){
+                    chars[index++] = c;
+                }
+                chars[index++] = chars[i];
+                strike = 1;
+            }
+            else {
+                chars[index++] = chars[i];
+            }
+        }
+        if(strike > 1){
+            for(char c:String.valueOf(strike).toCharArray()){
+                chars[index++] = c;
+            }
+        }
+        FoobarChallenge.printArrayChar(chars);
+        return index;
+    }
+
+    public static String reverseVowels(String s) {
+        int len = s.length();
+        char[] str = s.toCharArray();
+        FoobarChallenge.printArrayChar(str);
+        int start=0, end=len-1;
+        while(start<end){
+            if(!isVowel(str[start])) start++;
+            else if(!isVowel(str[end])) end--;
+            else {
+                System.out.println(str[start] + " " + str[end]);
+                char c = str[start];
+                str[start] = str[end];
+                str[end] = c;
+                start++;
+                end--;
+            }
+        }
+        return new String(str);
+    }
+
+    public static boolean isVowel(char c){
+        if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u' ||
+                c=='A' || c=='E' || c=='I' || c=='O' || c=='U') return true;
+        else return false;
+    }
+
+    public static boolean increasingTriplet(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int secondMin = Integer.MAX_VALUE;
+        for (int num : nums) {
+            System.out.println(min + " " + secondMin + " " + num);
+            if (num <= min) {
+                min = num;
+            } else if (num <= secondMin) {
+                secondMin = num;
+            } else {
+                System.out.println(min + " " + secondMin + " " + num);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String reverseWords(String s) {
+        return Arrays.stream(s.split(" ")).filter(item-> !item.isEmpty())
+                .reduce("", (res, elem)-> elem + " " + res).trim();
+    }
 
     public static int characterReplacement(String s, int k) {
         int result=0;
@@ -361,6 +476,7 @@ public class LeetCode {
             result[i] = product;
             product = product * nums[i];
         }
+        FoobarChallenge.printArray(result);
         product = 1;
         for(int i=nums.length-1;i>=0;i--    ){
             result[i] = result[i] * product;

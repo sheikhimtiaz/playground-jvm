@@ -56,9 +56,9 @@ public class Main {
 //        Hackerrank.run();
 //        Hackerrank.run();
 
-        FoobarChallenge.run();
+//        FoobarChallenge.run();
 
-//        LeetCode.run();
+        LeetCode.run();
 
 //        PrampPractice.run();
 

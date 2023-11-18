@@ -9,8 +9,5 @@
         <module name="playground-jvm" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="playground-jvm" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>

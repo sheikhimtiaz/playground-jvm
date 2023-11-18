@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertEquals;
 
 public class MonoPractice {
 
@@ -19,22 +19,22 @@ public class MonoPractice {
         String expected = "Hello world!";
 
         String result = blockingHelloWorld().block();
-        assertEquals(expected, result);
-
-        String result2 = blockingHelloWorld().block(Duration.of(1000, ChronoUnit.MILLIS));
-        assertEquals(expected, result2);
-
-        Optional<String> result3 = Mono.<String>empty().blockOptional();
-        assertEquals(Optional.empty(), result3);
-        blockingHelloWorld()
-                .log()
-//                .subscribeOn(Schedulers.parallel())
-                .subscribe(result4 -> assertEquals(expected, result4));
-
-        blockingHelloWorld()
-                .log()
-                .doOnNext(result5 -> assertEquals(expected, result5))
-                .subscribe();
+//        assertEquals(expected, result);
+//
+//        String result2 = blockingHelloWorld().block(Duration.of(1000, ChronoUnit.MILLIS));
+//        assertEquals(expected, result2);
+//
+//        Optional<String> result3 = Mono.<String>empty().blockOptional();
+//        assertEquals(Optional.empty(), result3);
+//        blockingHelloWorld()
+//                .log()
+////                .subscribeOn(Schedulers.parallel())
+//                .subscribe(result4 -> assertEquals(expected, result4));
+//
+//        blockingHelloWorld()
+//                .log()
+//                .doOnNext(result5 -> assertEquals(expected, result5))
+//                .subscribe();
     }
 
     private Mono<List<String>> monoOfList() {
