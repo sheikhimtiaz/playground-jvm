@@ -1,4 +1,4 @@
-package com.sheikhimtiaz;
+package com.sheikhimtiaz.problemsolving;
 
 
 import com.sheikhimtiaz.datatypes.Pair;
@@ -114,6 +114,17 @@ public class FoobarChallenge {
         for(int i=0; i<myArr.length; i++){
             if(i != 0) System.out.print(", ");
             System.out.print(myArr[i]);
+        }
+        System.out.println("");
+    }
+
+    public static void printArray(int myArr[][]){
+        for(int i=0; i<myArr.length; i++){
+            for(int j=0;j<myArr[i].length;j++){
+                if(j != 0) System.out.print(", ");
+                System.out.print(myArr[i][j]);
+            }
+            System.out.println();
         }
         System.out.println("");
     }

@@ -1,6 +1,6 @@
 package com.sheikhimtiaz.basicpractice;
 
-import com.sheikhimtiaz.FoobarChallenge;
+import com.sheikhimtiaz.problemsolving.FoobarChallenge;
 
 import java.util.Arrays;
 

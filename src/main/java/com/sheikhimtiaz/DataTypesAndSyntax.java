@@ -19,6 +19,32 @@ public class DataTypesAndSyntax {
 //        System.out.println("Compact".equals(VehicleSize.Compact.toString()));
 //        System.out.println(VehicleSize.valueOf("Compact"));
 //        System.out.println(Arrays.stream(VehicleSize.values()).toList());
+
+
+//        int strike = 535;
+//        char[] chars = new char[]{0,0,0,0,0};
+//        int index = 0;
+//        for(char c:String.valueOf(strike).toCharArray()){
+//            chars[index++] = c;
+//        }
+//        FoobarChallenge.printArrayChar(chars);
+//        index = 0;
+//        strike = 887;
+//        char[] chars2 = new char[]{0,0,0,0,0,0,0};
+//        for(char c:String.valueOf(strike).toCharArray()){
+//            chars2[index++] = c;
+//            strike /= 10;
+//        }
+//        FoobarChallenge.printArrayChar(chars2);
+
+        checkPriorityQueue();
+    }
+
+    private static void checkPriorityQueue() {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((x,y) -> y.compareTo(x));
+        pq.add(100);
+        pq.add(50);
+        System.out.println(pq.peek());
     }
 
     private static void testLambdaFunction(){

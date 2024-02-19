@@ -1,5 +1,8 @@
-package com.sheikhimtiaz;
+package com.sheikhimtiaz.problemsolving;
 
+import com.sheikhimtiaz.problemsolving.FoobarChallenge;
+
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -85,20 +88,185 @@ public class LeetCode {
 //        System.out.println(maxOperations(new int[]{1,2,3,4}, 5));
 //        System.out.println(maxOperations(new int[]{3,1,3,4,3}, 6));
 
-        int strike = 535;
-        char[] chars = new char[]{0,0,0};
-        int index = 0;
-        for(char c:String.valueOf(strike).toCharArray()){
-            chars[index++] = c;
+//        System.out.println(longestOnes(new int[]{1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 2));
+//        System.out.println(longestOnes(new int[]{1,1,1,0,0,0,1,1,1,1,0}, 2));
+//        System.out.println(longestOnes(new int[]{1,1,1,0,0,0,1,1,1,1,0}, 2));
+//        System.out.println(longestOnes(new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1}, 2));
+//        System.out.println(longestOnes(new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0}, 2));
+//        System.out.println(longestOnes(new int[]{1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0}, 2));
+
+//        System.out.println(maxVowels("abciiidef", 3));
+
+//        System.out.println(pivotIndex(new int[]{1,7,3,6,5,6}));
+//        System.out.println(pivotIndex(new int[]{1,2,3}));
+//        System.out.println(pivotIndex(new int[]{2,1,-1}));
+//        System.out.println(pivotIndex(new int[]{-1,-1,-1,-1,-1,0}));
+//        System.out.println(pivotIndex(new int[]{-1,-1,-1,0,1,1}));
+//        System.out.println(findMinimumPrice(Arrays.asList(1,2,3), 1));
+//        int[][] arr = { {3, 3}, {5, -1}, {-2, 4} };
+//        FoobarChallenge.printArray(kClosest(arr, 2));
+//        System.out.println(partitionString("abacaba"));
+
+//        MedianOfStream medianOfStream = new MedianOfStream();
+//        medianOfStream.insertNum(3);
+//        medianOfStream.insertNum(1);
+//        System.out.println(medianOfStream.findMedian());
+//        medianOfStream.insertNum(5);
+//        System.out.println(medianOfStream.findMedian());
+//        medianOfStream.insertNum(4);
+//        System.out.println(medianOfStream.findMedian());
+
+//        List<Interval> intervals = new ArrayList<>();
+//        intervals.add(new Interval(1, 4));
+//        intervals.add(new Interval(2, 5));
+//        intervals.add(new Interval(7, 9));
+//
+//        MergeIntervalSolution solution = new MergeIntervalSolution();
+//        List<Interval> mergedIntervals = solution.merge(intervals);
+//        MergeIntervalSolution.printIntervalList(mergedIntervals);
+
+
+
+    }
+
+    public static int partitionString(String s) {
+        int result = 0;
+        char[] chars = s.toCharArray();
+        Set<Character> set = new HashSet<>();
+        for(char c:chars){
+            if(set.contains(c)){
+                result++;
+                set = new HashSet<>();
+                set.add(c);
+            } else set.add(c);
         }
-        FoobarChallenge.printArrayChar(chars);
-        index = 0;
-        char[] chars2 = new char[]{0,0,0};
-        for(char c:String.valueOf(strike).toCharArray()){
-            chars2[index++] = c;
-            strike /= 10;
+        return set.isEmpty() ? result : result + 1;
+    }
+    public static int[][] kClosest(int[][] points, int k) {
+        int[][] ans = new int[k][2];
+        PriorityQueue<int[]> q = new PriorityQueue<>((a,b) ->
+                Integer.compare( (b[0]*b[0] + b[1]*b[1]) , (a[0]*a[0] + a[1]*a[1])) );
+        for(int[] point: points) {
+            q.add(point);
+            if(q.size() > k){
+                q.remove();
+            }
         }
-        FoobarChallenge.printArrayChar(chars2);
+        for(int i=0;i<k;i++){
+            int[] curr = q.poll();
+            ans[i][0] = curr[0];
+            ans[i][1] = curr[1];
+        }
+        return ans;
+    }
+
+    public static int maxAreaOfIsland(int[][] grid) {
+        int result = 0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[j].length;j++){
+                if(grid[i][j] > -1) {
+                    int currArea = maxAreaOfIslandHelper(i, j, grid);
+                    result = Math.max(currArea, result);
+                }
+            }
+        }
+        return result;
+    }
+
+    private static int maxAreaOfIslandHelper(int i, int j, int[][] grid) {
+        if(i<0 || j< 0 || i>(grid.length-1) || j>(grid[i].length-1)) return 0;
+        if(grid[i][j] == -1) return 0;
+        int temp = grid[i][j];
+        grid[i][j] = -1;
+        if(temp == 0) return 0;
+        else return 1 + maxAreaOfIslandHelper(i+1, j, grid)
+                + maxAreaOfIslandHelper(i, j+1, grid)
+                + maxAreaOfIslandHelper(i-1, j, grid)
+                + maxAreaOfIslandHelper(i, j-1, grid);
+    }
+
+
+    // complete the following function findMinimumPrice in the editor
+    // the function accepts following parameters
+    // int price[n]: price of each item
+    // int m: the number of discount coupons
+    // the discount coupons works like this, price after discount is = floor(price / 2 ^ discount_coupon_used)
+    // the function must return an int denoting the minimum price after discount
+    // use discounts on items distributed in a way that minimizes the price after discount of all items of the arrray
+    // return int: the minimum price after discount
+    public static int findMinimumPrice(List<Integer> price, int m) {
+        // write your code here
+        int result = 0;
+        int len = price.size();
+        Collections.sort(price, Collections.reverseOrder());
+        for(int i=0;i<len;i++){
+            if(m>0) {
+                int temp = biggestPowerOfTwo(price.get(i));
+                result += Math.floor(price.get(i) / Math.pow(2, temp));
+                m = m - temp;
+            }
+            else result += price.get(i);
+
+        }
+        return result;
+    }
+
+    // write a function that will return the biggest power of 2 that is less than or equal to the given number
+    public static int biggestPowerOfTwo(int n) {
+        int result = 0;
+        while(n>0){
+            n = n/2;
+            result++;
+        }
+        return result;
+    }
+
+
+
+
+    public static int pivotIndex(int[] nums) {
+        int leftSum=0, rightSum=0;
+        int sum = Arrays.stream(nums).sum();
+        for(int i=0;i<nums.length;i++){
+            rightSum = sum - leftSum - nums[i];
+            if(leftSum == rightSum) return i;
+            leftSum += nums[i];
+        }
+        return -1;
+    }
+
+    public static int maxVowels(String s, int k) {
+        int len = s.length();
+        if(len < k) return 0;
+        int vowelCount = countVowelsInString(s.substring(0,k));
+        int result = vowelCount;
+        for(int i=k;i<len;i++){
+            if(isVowel(s.charAt(i-k))) vowelCount--;
+            if(isVowel(s.charAt(i))) vowelCount++;
+            if(vowelCount > result) result = vowelCount;
+        }
+        return result;
+    }
+
+    public static int countVowelsInString(String s) {
+        System.out.println("first " + s);
+        int result = 0;
+        for(int i=0;i<s.length();i++){
+            if(isVowel(s.charAt(i))) result++;
+        }
+        return result;
+    }
+
+    public static int longestOnes(int[] nums, int k) {
+        int left = 0, right = 0, n = nums.length;
+        while (right < n) {
+            if (nums[right++] == 0) k--;
+            if (k < 0) {
+                if (nums[left] == 0) k++;
+                left++;
+            }
+        }
+        return right - left;
     }
 
     public static int maxOperations(int[] nums, int k) {
@@ -485,15 +653,35 @@ public class LeetCode {
         return result;
     }
 
-    public static int[] topKFrequent(int[] nums, int limit) {
+    public static int[] topKFrequent(int[] nums, int k) {
         int[] result;
         HashMap<Integer, Integer> myMap = new HashMap<>();
         for(int num: nums){
-            myMap.computeIfAbsent(num, k -> 0);
+            myMap.computeIfAbsent(num, i -> 0);
             myMap.put(num, myMap.get(num) + 1);
         }
         result = myMap.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .limit(limit).map(i -> i.getKey()).toList().stream().mapToInt(i->i).toArray();
+                .limit(k).map(i -> i.getKey()).toList().stream().mapToInt(i->i).toArray();
+        return result;
+    }
+
+    public static int[] topKFrequentBucket (int[] nums, int k) {
+        int[] result = new int[k];
+        HashMap<Integer, Integer> myMap = new HashMap<>();
+        for(int num: nums){
+            myMap.computeIfAbsent(num, i -> 1);
+            myMap.put(num, myMap.get(num) + 1);
+        }
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.comparingInt(myMap::get));
+        for(int val:myMap.keySet()){
+            pq.add(val);
+            if(pq.size() > k) {
+                pq.poll();
+            }
+        }
+        for(int i=0;i<k;i++) {
+            result[i] = pq.poll();
+        }
         return result;
     }
     public static List<List<String>> groupAnagrams(String[] strs) {

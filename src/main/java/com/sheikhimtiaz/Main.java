@@ -2,6 +2,12 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
+import com.sheikhimtiaz.algorithms.TopologicalSort;
+import com.sheikhimtiaz.basicpractice.SamplePracticeProblem;
+import com.sheikhimtiaz.builtinmethods.BuiltInMethods;
+import com.sheikhimtiaz.problemsolving.LeetCode;
+import com.sheikhimtiaz.problemsolving.WanderlogCodingTest;
+
 public class Main {
     public static int num = 0;
     public static void main(char[] args){
@@ -60,6 +66,8 @@ public class Main {
 
         LeetCode.run();
 
+//        Develab.run();
+
 //        PrampPractice.run();
 
 //        SamplePracticeProblem.run();
@@ -84,6 +92,11 @@ public class Main {
 
 //        MonoPractice.run();
 
+//        BuiltInMethods.run();
+
+//        TopologicalSort.run();
+
+//        WanderlogCodingTest.run();
     }
 
 
