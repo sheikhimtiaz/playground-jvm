@@ -126,9 +126,142 @@ public class LeetCode {
 //        MergeIntervalSolution.printIntervalList(mergedIntervals);
 
 
+//        System.out.println(shortestPath(new int[][]{new int[]{1,1,1,1},
+//                new int[]{1,1,0,1},
+//                new int[]{1,1,1,1},
+//                new int[]{1,1,0,0},
+//                new int[]{1,0,0,1}}, new int[]{0,1}, new int[]{2, 2}));
 
+//        twoSumAlt(new int[]{1,5,6,11}, 11);
+
+//        System.out.println(reverseWords("the sky is blue"));
+//        for(int item: new int[]{2,7}){
+//            switch (item) {
+//                case 1 :
+//                    System.out.println("1");
+//                case 2:
+//                    System.out.println("2");
+//                case 3:
+//                    System.out.println("4");
+//                default:
+//                    System.out.println("default");
+//            }
+//        }
+
+//        int[] arr = {1,2,3};
+//        List<Integer> list = new ArrayList<>();
+//        System.out.println(list);
+
+//        char[][] board = new char[][]{
+//                new char[] {'X','X','X','X'},
+//                new char[] {'X','O','O','X'},
+//                new char[] {'X','X','O','X'},
+//                new char[] {'X','O','X','X'},
+//        };
+//        surroundedRegions(board);
+
+//        System.out.println(mergeAlternately("abcd","pq"));
+
+        int[] arr = new int[]{1,2,1,2,3,1};
+        System.out.println(taskSchedulerII(arr, 3));
+        int[] arr2 = new int[]{5,8,8,5};
+        System.out.println(taskSchedulerII(arr2, 2));
     }
 
+    public static long taskSchedulerII(int[] tasks, int space) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int curr = 0;
+        for(int i=0; i<tasks.length; i++) {
+            if(!map.containsKey(tasks[i])) {
+                curr++;
+            } else {
+                int dist = Math.min((curr - map.get(tasks[i])), space);
+                curr += space - dist + 1;
+            }
+            map.put(tasks[i], curr);
+        }
+        return curr;
+    }
+
+    public static String mergeAlternately(String word1, String word2) {
+        StringBuilder sb = new StringBuilder();
+        int minLen = Math.min(word1.length(), word2.length());
+        for(int i=0;i<minLen;i++){
+            sb.append(word1.charAt(i));
+            sb.append(word2.charAt(i));
+        }
+        if(word1.length() > minLen) sb.append(word1.substring(minLen));
+        else sb.append(word2.substring(minLen));
+        return  sb.toString();
+    }
+    public static void surroundedRegions(char[][] board) {
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        for(int i=0;i<board.length;i++) {
+            for(int j=0;j<board[0].length;j++){
+                if(i==0 || i==board.length-1 || j==0 || j==board[0].length-1) {
+                    markSafe(board, visited, i, j);
+                }
+            }
+        }
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board[0].length;j++){
+                if(board[i][j] == 'O') board[i][j] = 'X';
+            }
+        }
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board[0].length;j++){
+                if(board[i][j] == 'S') board[i][j] = 'O';
+            }
+        }
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board[0].length;j++){
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    public static void markSafe(char[][] board, boolean[][] visited, int i, int j){
+        if(i<0 || i>=board.length || j<0 || j>=board[0].length) return;
+        if(!visited[i][j]) {
+            visited[i][j] = true;
+            if(board[i][j] == 'O') {
+                board[i][j] = 'S';
+                markSafe(board, visited, i+1, j);
+                markSafe(board, visited, i, j+1);
+                markSafe(board, visited, i-1, j);
+                markSafe(board, visited, i, j-1);
+            }
+        }
+    }
+    public static String gcdOfStrings(String str1, String str2) {
+        int len1 = str1.length();
+        int len2 = str2.length();
+        int gcdLength = gcd(len1, len2);
+        String potentialDivisor = str1.substring(0, gcdLength);
+        if (checkDivides(str1, potentialDivisor) && checkDivides(str2, potentialDivisor)) {
+            return potentialDivisor;
+        } else {
+            return "";
+        }
+    }
+
+    // Helper method to find the greatest common divisor
+    private static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    // Helper method to check if a string divides another string
+    private static boolean checkDivides(String s, String divisor) {
+        int len = s.length();
+        int divisorLen = divisor.length();
+        if (len % divisorLen != 0) return false;
+        for (int i = 0; i < len; i += divisorLen) {
+            if (!s.substring(i, i + divisorLen).equals(divisor)) {
+                return false;
+            }
+        }
+        return true;
+    }
     public static int partitionString(String s) {
         int result = 0;
         char[] chars = s.toCharArray();
@@ -531,6 +664,56 @@ public class LeetCode {
             myMap.putIfAbsent(target-nums[i], 1);
         }
         return result;
+    }
+
+
+    public static List<Integer> twoSumAlt(int[] nums, int target) {
+        List<Integer> result = new ArrayList<>();
+        return result;
+    }
+
+    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int max = 0;
+        List<Boolean> result = new ArrayList<>();
+        for(int candy: candies) {
+            max = Math.max(max, candy);
+        }
+        for(int candy: candies) {
+            result.add(candy + extraCandies >= max);
+        }
+        return result;
+    }
+
+
+
+    public static int shortestPath(int[][] grid, int[] source, int[] destination) {
+        int m = grid.length;
+        int n = grid[0].length;
+        boolean[][] visited = new boolean[m][n];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(source);
+        visited[source[0]][source[1]] = true;
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int distance = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int[] curr = queue.poll();
+                int x = curr[0];
+                int y = curr[1];
+                if (x == destination[0] && y == destination[1]) return distance;
+                for (int[] dir : directions) {
+                    int newX = x + dir[0];
+                    int newY = y + dir[1];
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n && grid[newX][newY] == 1 && !visited[newX][newY]) {
+                        queue.offer(new int[]{newX, newY});
+                        visited[newX][newY] = true;
+                    }
+                }
+            }
+            distance++;
+        }
+        return -1;
     }
 
     public static int[] twoSumBruteforce(int[] nums, int target) {

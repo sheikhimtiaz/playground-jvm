@@ -29,54 +29,36 @@ public class TopologicalSort {
     }
 
     public static boolean canFinish(int numCourses, int[][] prerequisites) {
-        ArrayList<ArrayList<Integer> > graph
+        ArrayList<ArrayList<Integer>> graph
                 = new ArrayList<>(numCourses);
         int[] inDegree = new int[numCourses];
-
         for (int i = 0; i < numCourses; i++) {
             graph.add(new ArrayList<>());
         }
-
-        // Initialize the graph and in-degrees
         for (int[] edge : prerequisites) {
             graph.get(edge[0]).add(edge[1]);
             inDegree[edge[1]]++;
         }
-
         Queue<Integer> queue = new LinkedList<>();
-
-        // Push all the nodes with no dependencies
-        // (in-degree = 0) into the queue
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
                 queue.add(i);
             }
         }
-
         while (!queue.isEmpty()) {
             int node = queue.poll();
-
-            // Reduce the in-degree of all neighbors by 1
             for (int neighbor : graph.get(node)) {
                 inDegree[neighbor]--;
-
-                // Push the neighboring node if we have
-                // covered all its dependencies (in-degree =
-                // 0)
                 if (inDegree[neighbor] == 0) {
                     queue.add(neighbor);
                 }
             }
         }
-
-        // Check if there is a node whose in-degree is not
-        // zero
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] != 0) {
                 return false;
             }
         }
-
         return true;
     }
     private static void topSortFahimBhai(int n, int[] taken, int[] list, int[] inDegree, int[][] take) {

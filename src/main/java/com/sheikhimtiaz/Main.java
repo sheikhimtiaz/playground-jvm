@@ -2,11 +2,7 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
-import com.sheikhimtiaz.algorithms.TopologicalSort;
-import com.sheikhimtiaz.basicpractice.SamplePracticeProblem;
-import com.sheikhimtiaz.builtinmethods.BuiltInMethods;
-import com.sheikhimtiaz.problemsolving.LeetCode;
-import com.sheikhimtiaz.problemsolving.WanderlogCodingTest;
+import com.sheikhimtiaz.problemsolving.*;
 
 public class Main {
     public static int num = 0;
@@ -26,6 +22,7 @@ public class Main {
 //        }
 //        System.out.println("loop inside main!");
 
+//        BasicOOP.run();
 
 //        GraalVMInternship.run();
 
@@ -65,6 +62,13 @@ public class Main {
 //        FoobarChallenge.run();
 
         LeetCode.run();
+
+//        BracItInterview.run();
+
+//        WindAppInterview.run();
+
+
+//        Micro1Interview.run();
 
 //        Develab.run();
 
