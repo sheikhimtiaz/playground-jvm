@@ -2,6 +2,7 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
+import com.sheikhimtiaz.interview.ZalandoPractice;
 import com.sheikhimtiaz.problemsolving.*;
 
 public class Main {
@@ -61,7 +62,7 @@ public class Main {
 
 //        FoobarChallenge.run();
 
-        LeetCode.run();
+//        LeetCode.run();
 
 //        BracItInterview.run();
 
@@ -101,6 +102,8 @@ public class Main {
 //        TopologicalSort.run();
 
 //        WanderlogCodingTest.run();
+
+        ZalandoPractice.run();
     }
 
 

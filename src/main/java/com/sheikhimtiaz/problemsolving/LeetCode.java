@@ -162,11 +162,14 @@ public class LeetCode {
 
 //        System.out.println(mergeAlternately("abcd","pq"));
 
-        int[] arr = new int[]{1,2,1,2,3,1};
-        System.out.println(taskSchedulerII(arr, 3));
-        int[] arr2 = new int[]{5,8,8,5};
-        System.out.println(taskSchedulerII(arr2, 2));
+//        int[] arr = new int[]{1,2,1,2,3,1};
+//        System.out.println(taskSchedulerII(arr, 3));
+//        int[] arr2 = new int[]{5,8,8,5};
+//        System.out.println(taskSchedulerII(arr2, 2));
+
     }
+
+
 
     public static long taskSchedulerII(int[] tasks, int space) {
         Map<Integer, Integer> map = new HashMap<>();
