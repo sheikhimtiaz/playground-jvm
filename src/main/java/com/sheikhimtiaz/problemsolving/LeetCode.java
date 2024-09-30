@@ -218,8 +218,12 @@ public class LeetCode {
         // Integer y = 1;
         // System.out.println(x == y); // true
 
-        
 
+
+    }
+
+    public static boolean isAdditiveNumber(String num) {
+        return true;
     }
 
     public static int flatlandSpaceStations(int n, int[] c) {
@@ -230,10 +234,6 @@ public class LeetCode {
         }
         maxDistance = Math.max((n - 1 - c[c.length-1]), maxDistance);
         return maxDistance;
-    }
-
-    public static boolean isAdditiveNumber(String num) {
-        return true;
     }
 
     public static String numberToWords(int number) {
