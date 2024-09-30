@@ -16,6 +16,13 @@ public class BuiltInMethods {
 
 //        checkFailSafeIterator();
 
+//        List<String> immutableList = List.of("Item1", "Item2", "Item3");
+
+        // Attempting to modify the immutableList will throw UnsupportedOperationException
+//         immutableList.add("Item4"); // This will throw an exception
+
+//        System.out.println(immutableList);
+
 
     }
 

@@ -167,9 +167,262 @@ public class LeetCode {
 //        int[] arr2 = new int[]{5,8,8,5};
 //        System.out.println(taskSchedulerII(arr2, 2));
 
+//        System.out.println(longestSubarray(new int[]{1,2,3,3,2,2,3,3,3}));
+//
+//
+//        System.out.println("First problem test cases - Two Sum");
+//        int[] result1 = twoSumReturnArray(new int[]{2, 7, 11, 15}, 9);
+//        System.out.println(result1[0] + " " + result1[1]);
+//        int[] result2 = twoSumReturnArray(new int[]{3, 2, 4}, 6);
+//        System.out.println(result2[0] + " " + result2[1]);
+//        int[] result3 = twoSumReturnArray(new int[]{3, 3}, 6);
+//        System.out.println(result3[0] + " " + result3[1]);
+//        int[] result4 = twoSumReturnArray(new int[]{5, 7, 8, 4, 5, 1}, 10);
+//        System.out.println(result4[0] + " " + result4[1]);
+//
+//        // Second problem test cases - Valid Parentheses
+//        System.out.println("Valid Parentheses ## () -> "+isValidParentheses("()"));
+//        System.out.println("Valid Parentheses ## ()[]{} -> "+isValidParentheses("()[]{}"));
+//        System.out.println("Valid Parentheses ## (] ->"+isValidParentheses("(]"));
+//
+//        // Third problem test cases - Happy Number
+//        System.out.println("HappyNumber ## 19 -> "+isHappyNumber(19));
+//        System.out.println("HappyNumber ## 2 -> "+isHappyNumber(2));
+
+//        System.out.println(findLeastNumOfUniqueInts(new int[]{2,4,1,8,3,5,1,3}, 3));
+
+//        System.out.println(backspaceCompare("ab##", "c#d#"));
+//
+//        System.out.println(backspaceCompare("ab#c", "ad#c"));
+//
+//        System.out.println(backspaceCompare("a#c", "b"));
+//        System.out.println(backspaceCompare("xywrrmp", "xywrrmu#p"));
+//        System.out.println(backspaceCompare("bbbextm", "bbb#extm"));
+//        System.out.println(backspaceCompare("nzp#o#g", "b#nzp#o#g"));
+
+//        System.out.println(numberToWords(123));
+//        System.out.println(numberToWords(10500));
+//        System.out.println(numberToWords(10101010));
+
+        // System.out.println(isAdditiveNumber("112358")); // true
+        // System.out.println(isAdditiveNumber("199100199")); // true
+
+        // System.out.println(flatlandSpaceStations(5, new int[]{0,4})); // 2
+
+        // Integer caching in Java
+        // Integer a = 128;
+        // Integer b = 128;
+        // System.out.println(a == b); // false
+
+        // Integer x = 1;
+        // Integer y = 1;
+        // System.out.println(x == y); // true
+
+        
+
     }
 
+    public static int flatlandSpaceStations(int n, int[] c) {
+        Arrays.sort(c);
+        int maxDistance = c[0];
+        for(int i=1; i<c.length; i++) {
+            maxDistance = Math.max((c[i] - c[i-1]) / 2, maxDistance);
+        }
+        maxDistance = Math.max((n - 1 - c[c.length-1]), maxDistance);
+        return maxDistance;
+    }
 
+    public static boolean isAdditiveNumber(String num) {
+        return true;
+    }
+
+    public static String numberToWords(int number) {
+        if(number == 0) return "Zero";
+        int i = 0;
+        String result = "";
+        while(number > 0) {
+            result = numberToWordsHelper(number%1000) + " " + THOUSANDS[i] + " " + result;
+            i++;
+            number = number / 1000;
+        }
+        return result.trim();
+    }
+
+    private static final String[] THOUSANDS = {"", "Thousand", "Million", "Billion", "Trillion"};
+
+    private static final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
+            "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+
+    private static final String[] TENS = {"", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+
+    private static String numberToWordsHelper(int number) {
+        if(number == 0) return "";
+        else if(number < 20) return LESS_THAN_20[number];
+        else if(number < 100) return TENS[number/10] + " " + numberToWordsHelper(number%10);
+        else return LESS_THAN_20[number/100] + " Hundred " + numberToWordsHelper(number%100);
+    }
+
+    public static boolean backspaceCompare(String s, String t) {
+        char[] arr1 = s.toCharArray();
+        char[] arr2 = t.toCharArray();
+        int index1 = arr1.length, index2 = arr2.length;
+        while (index1>0 && index2>0) {
+            index1 = getIndexAfterBackspace(arr1, index1-1);
+            index2 = getIndexAfterBackspace(arr2, index2-1);
+            if(index1 == -1 && index2 == -1) return true;
+            if(index1 == -1) return false;
+            if(index2 == -1) return false;
+            if(arr1[index1] != arr2[index2]) return false;
+        }
+        if(index1>0) {
+            index1 = getIndexAfterBackspace(arr1, index1-1);
+            return index1 == -1;
+        }
+        if(index2>0) {
+            index2 = getIndexAfterBackspace(arr2, index2-1);
+            return index2 == -1;
+        }
+        return true;
+    }
+    public static int getIndexAfterBackspace(char[] arr, int index) {
+        int streak = 0;
+        while(index >= 0 && (streak > 0 || arr[index] == '#')) {
+            if(arr[index] == '#') streak++;
+            else streak--;
+            index--;
+        }
+        return index;
+    }
+
+    public static int findLeastNumOfUniqueInts(int[] arr, int k) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>(frequencyMap.values());
+        while (k > 0 && !minHeap.isEmpty()) {
+            int freq = minHeap.poll();
+            k -= freq;
+        }
+        return minHeap.size() + (k < 0 ? 1 : 0);
+    }
+
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        List<Integer> result = new ArrayList<>();
+        int max = nums[0];
+        TreeMap<Integer, Integer> map = new TreeMap<>((a, b) -> b - a);
+        for (int i = 0; i < k; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+            if(max < nums[i]) {
+                max = nums[i];
+            }
+        }
+        result.add(max);
+        for (int i = k; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+            max = map.firstKey();
+            result.add(max);
+            if(map.get(nums[i-k]) > 1) map.put(nums[i-k], map.get(nums[i-k]) - 1);
+            else map.remove(nums[i-k]);
+        }
+        return result.stream().mapToInt(i -> i).toArray();
+    }
+
+    public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+        HashSet<Integer> set3 = new HashSet<>();
+        HashMap<Integer, Integer> countMap = new HashMap<>();
+        for (int num : nums1) {
+            set1.add(num);
+        }
+        for (int num : nums2) {
+            set2.add(num);
+        }
+        for (int num : nums3) {
+            set3.add(num);
+        }
+        for (int num : set1) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        for (int num : set2) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        for (int num : set3) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        List<Integer> result = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() >= 2) {
+                result.add(entry.getKey());
+            }
+        }
+        return result;
+    }
+
+    public static boolean isHappyNumber(int n) {
+        HashSet<Integer> seen = new HashSet<>();
+
+        while(n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = findNext(n);
+        }
+
+        return n == 1;
+    }
+
+    public static int findNext(int n) {
+        int sum = 0;
+        while(n>0) {
+            int digit = n% 10;
+            sum += digit*digit;
+            n = n / 10;
+        }
+        return sum;
+    }
+
+    public static boolean isValidParentheses(String s) {
+        Stack<Character> stack = new Stack<>();;
+        for(char c: s.toCharArray()) {
+            if(c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if(stack.isEmpty()) return false;
+                char top = stack.pop();
+                if(c == ')' && top != '(') return false;
+                if(c == '}' && top != '{') return false;
+                if(c == ']' && top != '[') return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public static int[] twoSumReturnArray(int[] nums, int target) {
+        HashMap<Integer, Integer> myMap = new HashMap<>();
+        for(int i = 0; i < nums.length; i++) {
+            if(myMap.containsKey(target - nums[i])) {
+                return new int[]{myMap.get(target - nums[i]), i};
+            } else myMap.put(nums[i], i);
+        }
+        return new int[0];
+    }
+
+    public static int longestSubarray(int[] nums) {
+        int len = nums.length;
+        int maxNumber = Integer.MIN_VALUE;
+        int currStreak = 0, maxStreak = 0;
+        for(int i = 0; i < len; i++) {
+            if(maxNumber < nums[i]) {
+                currStreak = 1; maxStreak = 1;
+                maxNumber = nums[i];
+            } else if (maxNumber == nums[i]) {
+                currStreak++;
+            } else currStreak = 0;
+            if(maxStreak < currStreak) maxStreak = currStreak;
+            System.out.println("number: " + nums[i] + ", " + maxStreak + ", " + currStreak);
+        }
+        return maxStreak;
+    }
 
     public static long taskSchedulerII(int[] tasks, int space) {
         Map<Integer, Integer> map = new HashMap<>();

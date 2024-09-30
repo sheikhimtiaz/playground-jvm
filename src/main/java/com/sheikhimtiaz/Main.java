@@ -2,6 +2,7 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
+import com.sheikhimtiaz.datatypes.DataStructures;
 import com.sheikhimtiaz.interview.ZalandoPractice;
 import com.sheikhimtiaz.problemsolving.*;
 
@@ -62,7 +63,7 @@ public class Main {
 
 //        FoobarChallenge.run();
 
-//        LeetCode.run();
+        LeetCode.run();
 
 //        BracItInterview.run();
 
@@ -103,7 +104,9 @@ public class Main {
 
 //        WanderlogCodingTest.run();
 
-        ZalandoPractice.run();
+//        ZalandoPractice.run();
+
+//        DataStructures.run();
     }
 
 

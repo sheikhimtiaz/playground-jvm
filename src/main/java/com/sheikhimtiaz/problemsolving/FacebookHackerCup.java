@@ -1,9 +1,6 @@
 package com.sheikhimtiaz.problemsolving;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.*;
 
 public class FacebookHackerCup {
 
@@ -28,6 +25,21 @@ public class FacebookHackerCup {
         for(String str:arr){
             System.out.println("Case #"+i+": "+consistency(str)); i++;
         }
+    }
+
+    static int[] getIndicesOfItemWeights(int[] arr, int limit) {
+        int[] result = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i < arr.length; i++){
+            if(!map.containsKey(limit - arr[i])){
+                map.put(arr[i], i);
+            } else {
+                result[0] = i;
+                result[1] = map.get(limit-arr[i]);
+                return result;
+            }
+        }
+        return result;
     }
 
     private static int consistency(String input){
