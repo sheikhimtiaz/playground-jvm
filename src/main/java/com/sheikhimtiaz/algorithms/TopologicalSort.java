@@ -42,7 +42,7 @@ public class TopologicalSort {
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
-                queue.add(i);
+                queue.offer(i);
             }
         }
         while (!queue.isEmpty()) {
@@ -50,7 +50,7 @@ public class TopologicalSort {
             for (int neighbor : graph.get(node)) {
                 inDegree[neighbor]--;
                 if (inDegree[neighbor] == 0) {
-                    queue.add(neighbor);
+                    queue.offer(neighbor);
                 }
             }
         }
@@ -61,6 +61,7 @@ public class TopologicalSort {
         }
         return true;
     }
+
     private static void topSortFahimBhai(int n, int[] taken, int[] list, int[] inDegree, int[][] take) {
         int i, j, k;
         // when take[a][b] = 1, that means a must come before b

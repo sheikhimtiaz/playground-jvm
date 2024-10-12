@@ -1,8 +1,6 @@
 package com.sheikhimtiaz.problemsolving;
 
-import com.sheikhimtiaz.problemsolving.FoobarChallenge;
-
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
+import java.lang.classfile.components.ClassPrinter.ListNode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -206,6 +204,9 @@ public class LeetCode {
 
         // System.out.println(isAdditiveNumber("112358")); // true
         // System.out.println(isAdditiveNumber("199100199")); // true
+        // System.out.println(isAdditiveNumber("9801982396")); // false
+        // System.out.println(isAdditiveNumber("121474836472147483648")); // true
+        // System.out.println(isAdditiveNumber("999999999999999999999999")); // false
 
         // System.out.println(flatlandSpaceStations(5, new int[]{0,4})); // 2
 
@@ -218,12 +219,300 @@ public class LeetCode {
         // Integer y = 1;
         // System.out.println(x == y); // true
 
+        // int[] days1 = {1, 4, 6, 7, 8, 20};
+        // int[] costs1 = {2, 7, 15};
+        // System.out.println(mincostTickets(days1, costs1));  // Output: 11
+        
+        // int[] days2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31};
+        // int[] costs2 = {2, 7, 15};
+        // System.out.println(mincostTickets(days2, costs2));  // Output: 17
+
+
+        // System.out.println(countSubstrings("abcdedfffkbkml"));
+
+        // System.out.println(maxProduct(new int[]{-2,-1,-3,-1,0,1,5}));
+        // -2
+        // 2
+        // -6 , 2
+        // 6, -2
+        // 0, 0
+        // 1, 1,
+        // 5, 5
+
+        // System.out.println(findMinRotatedSortedArray(new int[]{3,4,5,1,2}));
+        // System.out.println(findMinRotatedSortedArray(new int[]{4,5,6,7,0,1,2}));
+        // System.out.println(findMinRotatedSortedArray(new int[]{11,13,15,17}));
+        // System.out.println(findMinRotatedSortedArray(new int[]{2,1}));
+        // [ 12, 14, 0, 1, 3, 4, 5, 6, 7]
+
 
 
     }
 
+    public static int numIslands(char[][] grid) {
+        int result = 0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0; j<grid[i].length;j++){
+                if(grid[i][j] != '0'){
+                    result++;
+                    markCountedIsland(grid, i, j);
+                }
+            }
+        }
+        return result;
+    }
+
+    public static void markCountedIsland(char[][] grid, int i, int j) {
+        if(i<0 || j<0 || i>=grid.length || j>=grid[0].length || grid[i][j] == '0') return;
+        grid[i][j] = '0';
+        markCountedIsland(grid, i+1, j);
+        markCountedIsland(grid, i-1, j);
+        markCountedIsland(grid, i, j+1);
+        markCountedIsland(grid, i, j-1);
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set = new HashSet<>();
+        int maxLength = 0;
+        int start = 0;
+        
+        for (int end = 0; end < s.length(); end++) {
+            char currentChar = s.charAt(end);
+            
+            while (set.contains(currentChar)) {
+                set.remove(s.charAt(start));
+                start++;
+            }
+            
+            set.add(currentChar);
+            
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+        
+        return maxLength;
+    }
+
+    public static int lengthOfLIS(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int n = nums.length;
+        int[] dp = new int[n];
+        int maxLength = 1;
+        
+        Arrays.fill(dp, 1);
+        
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            maxLength = Math.max(maxLength, dp[i]);
+        }
+        
+        return maxLength;
+    }
+
+    public static int coinChange(int[] coins, int amount) {
+        int[] dp = new int[amount+5];
+        dp[0] = 0;
+        for(int i=1;i<=amount;i++)
+        {
+            for(int j=0;j<coins.length;j++)
+            {
+                if(coins[j]<=i)
+                {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount? -1 : dp[amount];
+    }
+
+    public static int climbStairs(int n) {
+        if (n == 1) return 1;
+        
+        int prev2 = 1;
+        int prev1 = 1;
+        
+        for (int i = 2; i <= n; i++) {
+            int current = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = current;
+        }
+        
+        return prev1;
+    }
+
+    public static int findMinRotatedSortedArray(int[] nums) {
+        if(nums[0] < nums[nums.length-1]) return nums[0];
+        else {
+            int left = 0, right = nums.length-1;
+            int result = nums[0];
+            while(left<right && Math.abs(left-right) > 1) {
+                int mid = (left+right) / 2;
+                if(nums[mid] > nums[right]){
+                    left = mid;
+                }
+                if(nums[left] > nums[mid]){
+                    right = mid;
+                }
+                if(Math.abs(left-right) == 1) {
+                    result = Math.min(nums[left], nums[right]);
+                }
+            }
+            return result;
+        }
+    }
+
+    public static int maxProduct(int[] nums) {
+        if (nums.length == 0) return 0;
+
+        int max_product = nums[0];
+        int min_product = nums[0];
+        int result = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int temp_max = max_product;
+            
+            max_product = Math.max(nums[i], Math.max(nums[i] * temp_max, nums[i] * min_product));
+            min_product = Math.min(nums[i], Math.min(nums[i] * temp_max, nums[i] * min_product));
+
+            result = Math.max(result, max_product);
+        }
+
+        return result;
+    }
+
+    public static int maxSubArray(int[] nums) {
+        int sum = 0, max = nums[0];
+        for(int i=0;i<nums.length;i++) {
+            sum += nums[i];
+            if(sum > max) {
+                max = sum;
+            }
+            if(sum < 0) {
+                sum = 0;
+            }
+        }
+        return 5;
+    }
+
     public static boolean isAdditiveNumber(String num) {
+        int n = num.length();
+        
+        for (int i = 1; i <= n/2; i++) {
+            for (int j = i + 1; j < Math.min(n, i + 17); j++) {
+                // System.out.println("i, j -> "+i + ", " + j);
+                if (isValidSeqForAdditiveNum(num, i, j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean isValidSeqForAdditiveNum(String num, int i, int j) {
+        // Get the first and second numbers
+        String num1 = num.substring(0, i);
+        String num2 = num.substring(i, j);
+        
+        // Leading zeros are invalid unless the number is "0"
+        if ((num1.length() > 1 && num1.startsWith("0")) || (num2.length() > 1 && num2.startsWith("0"))) {
+            return false;
+        }
+        // System.out.println("num1, num2 -> " + num1 + ", " + num2);
+        Long n1 = Long.parseLong(num1);
+        Long n2 = Long.parseLong(num2);
+        
+        String sum;
+        
+        // Start checking the rest of the sequence
+        for (int k = j; k < num.length(); k += sum.length()) {
+            Long n3 = n1 + n2;  // n3 is the sum of the previous two numbers
+            sum = String.valueOf(n3);  // Convert the sum to a string
+            
+            // If the remaining part of the string doesn't start with sum, return false
+            if (!num.startsWith(sum, k)) {
+                return false;
+            }
+            
+            // Move forward: n1 becomes n2, and n2 becomes the current sum
+            n1 = n2;
+            n2 = n3;
+        }
         return true;
+    }
+
+    public static int countSubstrings(String s) {
+        int n = s.length();
+        int count = 0;
+        
+        // Iterate through each possible center (total 2n-1 centers)
+        for (int center = 0; center< 2 * n - 1; center++) {
+            int left = center / 2;
+            int right = left + center % 2;
+            // Expand around the center
+            while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {
+                count++;  // Found a palindrome
+                left--;
+                right++;
+            }
+        }
+        
+        return count;
+    }
+
+    public static int mincostTickets(int[] days, int[] costs) {
+        Set<Integer> travelDays = new HashSet<>();
+        for (int day : days) {
+            travelDays.add(day);
+        }
+        int[] dp = new int[366];
+        for (int i = 1; i <= days[days.length-1]; i++) {
+            if (!travelDays.contains(i)) {
+                dp[i] = dp[i - 1]; 
+            } else {
+                dp[i] = Math.min(
+                    dp[i - 1] + costs[0],
+                    Math.min(
+                        dp[Math.max(0, i - 7)] + costs[1], 
+                        dp[Math.max(0, i - 30)] + costs[2]
+                    )
+                );
+            }
+        }
+        
+        return dp[days[days.length-1]];
+    }
+
+
+    public int mincostTicketsFast(int[] days, int[] costs) {
+        return mincostTickets(days, costs, 0, 0, new int[days.length]);
+    }
+
+    private int mincostTickets(int[] days, int[] costs, int index, int goodUntil, int[] dp) {
+        if(index >= days.length) {
+            return 0;
+        }
+        if(days[index] <= goodUntil) {
+            return mincostTickets(days, costs, index+1, goodUntil, dp);
+        }
+        if(dp[index] != 0) {
+            return dp[index];
+        }
+        int 
+            minCost = Math.min(
+                costs[0] + mincostTickets(days, costs, index+1, days[index], dp),
+                Math.min(
+                costs[1] + mincostTickets(days, costs, index+1, days[index]+6, dp),
+                costs[2] + mincostTickets(days, costs, index+1, days[index]+29, dp)
+                )
+                );
+        dp[index] = minCost;
+        return minCost;
     }
 
     public static int flatlandSpaceStations(int n, int[] c) {
@@ -802,7 +1091,7 @@ public class LeetCode {
         int left=0, right=height.length-1, result = 0;
         while(left<right){
             result = Math.max(result, (right-left)*Math.min(height[left], height[right]));
-            if(height[left]<height[right]) left++; else right--;
+            if(height[left]<height[right]) left++;  else right--;
         }
         return result;
     }
