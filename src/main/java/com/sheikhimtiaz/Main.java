@@ -2,9 +2,7 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
-import com.sheikhimtiaz.datatypes.DataStructures;
-import com.sheikhimtiaz.interview.ZalandoPractice;
-import com.sheikhimtiaz.problemsolving.*;
+import com.sheikhimtiaz.interview.RecentJavaInterview;
 
 public class Main {
     public static int num = 0;
@@ -63,7 +61,9 @@ public class Main {
 
 //        FoobarChallenge.run();
 
-        LeetCode.run();
+//        LeetCode.run();
+
+        RecentJavaInterview.run();
 
 //        BracItInterview.run();
 
