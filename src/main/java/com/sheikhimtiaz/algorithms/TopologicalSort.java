@@ -4,21 +4,21 @@ import java.util.*;
 
 public class TopologicalSort {
     public static void run() {
-//        int n = 4;
-//        int[] taken = new int[n];
-//        int[] list = new int[n];
-//        int[] inDegree = new int[n];
-//        int[][] take = new int[n][n];
-//        topSortFahimBhai(n, taken, list, inDegree, take);
+        int n = 4;
+        int[] taken = new int[n];
+        int[] list = new int[n];
+        int[] inDegree = new int[n];
+        int[][] take = new int[n][n];
+        topSortFahimBhai(n, taken, list, inDegree, take);
 
 
-//        Graph graph = new Graph(3);
-//        graph.addEdge(0, 1);
-//        graph.addEdge(1, 2);
-//        graph.addEdge(2, 0);
-//
-//        List<Integer> result = TopologicalSortWithBfs.topologicalSort(graph);
-//        System.out.println(result);
+        Graph graph = new Graph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+
+        List<Integer> result = TopologicalSortWithBfs.topologicalSort(graph);
+        System.out.println(result);
 
         int[][] prerequisites = {{0,1},{1,2}};
         System.out.println(canFinish(3, prerequisites));
@@ -90,51 +90,53 @@ public class TopologicalSort {
             for(i=0; i<n; i++)
                 System.out.println(list[i]);
     }
-}
 
-class Graph {
-    private Map<Integer, List<Integer>> adjacencyList;
 
-    public Graph(int n) {
-        adjacencyList = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            adjacencyList.put(i, new ArrayList<>());
-        }
-    }
+    static class Graph {
+        private Map<Integer, List<Integer>> adjacencyList;
 
-    public void addEdge(int u, int v) {
-        adjacencyList.get(u).add(v);
-    }
-
-    public Map<Integer, List<Integer>> getAdjacencyList() {
-        return adjacencyList;
-    }
-}
-
-class TopologicalSortWithBfs {
-    public static void dfs(Map<Integer, List<Integer>> graph, int vertex, Stack<Integer> stack, Set<Integer> visited) {
-        visited.add(vertex);
-        for (int neighbor : graph.get(vertex)) {
-            if (!visited.contains(neighbor)) {
-                dfs(graph, neighbor, stack, visited);
+        public Graph(int n) {
+            adjacencyList = new HashMap<>();
+            for (int i = 0; i < n; i++) {
+                adjacencyList.put(i, new ArrayList<>());
             }
         }
-        stack.push(vertex);
+
+        public void addEdge(int u, int v) {
+            adjacencyList.get(u).add(v);
+        }
+
+        public Map<Integer, List<Integer>> getAdjacencyList() {
+            return adjacencyList;
+        }
     }
 
-    public static List<Integer> topologicalSort(Graph graph) {
-        Stack<Integer> stack = new Stack<>();
-        Set<Integer> visited = new HashSet<>();
-        for (int vertex : graph.getAdjacencyList().keySet()) {
-            if (!visited.contains(vertex)) {
-                dfs(graph.getAdjacencyList(), vertex, stack, visited);
+    class TopologicalSortWithBfs {
+        public static void dfs(Map<Integer, List<Integer>> graph, int vertex, Stack<Integer> stack, Set<Integer> visited) {
+            visited.add(vertex);
+            for (int neighbor : graph.get(vertex)) {
+                if (!visited.contains(neighbor)) {
+                    dfs(graph, neighbor, stack, visited);
+                }
             }
+            stack.push(vertex);
         }
-        List<Integer> ordering = new ArrayList<>();
-        while (!stack.isEmpty()) {
-            ordering.add(stack.pop());
+
+        public static List<Integer> topologicalSort(Graph graph) {
+            Stack<Integer> stack = new Stack<>();
+            Set<Integer> visited = new HashSet<>();
+            for (int vertex : graph.getAdjacencyList().keySet()) {
+                if (!visited.contains(vertex)) {
+                    dfs(graph.getAdjacencyList(), vertex, stack, visited);
+                }
+            }
+            List<Integer> ordering = new ArrayList<>();
+            while (!stack.isEmpty()) {
+                ordering.add(stack.pop());
+            }
+            return ordering;
         }
-        return ordering;
+
     }
 
 }

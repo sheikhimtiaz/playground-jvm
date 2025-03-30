@@ -178,6 +178,56 @@ public class RecentJavaInterview {
     }
 
 
+    public static int getMinimumTimeAlt(List<Integer> processSize, List<Integer> capacity) {
+        int n = processSize.size();
+        int m = capacity.size();
+
+        List<List<Integer>> assignments = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            assignments.add(new ArrayList<>());
+        }
+
+        List<Integer> processIndices = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            processIndices.add(i);
+        }
+        Collections.sort(processIndices, (a, b) -> processSize.get(b) - processSize.get(a));
+
+        for (int processIndex : processIndices) {
+            int size = processSize.get(processIndex);
+            int bestProcessor = -1;
+            int earliestCompletion = Integer.MAX_VALUE;
+
+            for (int i = 0; i < m; i++) {
+                if (capacity.get(i) >= size) {
+                    int currentTime = assignments.get(i).isEmpty() ?
+                            1 : assignments.get(i).get(assignments.get(i).size() - 1) + 2; // Last completion + pause + process
+
+                    if (currentTime < earliestCompletion) {
+                        earliestCompletion = currentTime;
+                        bestProcessor = i;
+                    }
+                }
+            }
+
+            if (bestProcessor == -1) {
+                return -1;
+            }
+
+            assignments.get(bestProcessor).add(earliestCompletion);
+        }
+
+        int maxTime = 0;
+        for (List<Integer> processorTimes : assignments) {
+            if (!processorTimes.isEmpty()) {
+                maxTime = Math.max(maxTime, processorTimes.get(processorTimes.size() - 1));
+            }
+        }
+
+        return maxTime;
+    }
+
+
 
     public static int getMinimumTime2(List<Integer> processSize, List<Integer> capacity) {
         int n = processSize.size();

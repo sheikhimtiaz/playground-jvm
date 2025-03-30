@@ -5,23 +5,23 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class BuiltInMethods {
     public static void run() {
-//        int val = Math.abs(-5);
-//        System.out.println(val);
-//
-//        inheritenceAgain();
-//
-//        checkSynchronizedKeyword();
+        int val = Math.abs(-5);
+        System.out.println(val);
 
-//        checkDifferentKindsOfSets();
+        inheritenceAgain();
 
-//        checkFailSafeIterator();
+        checkSynchronizedKeyword();
 
-//        List<String> immutableList = List.of("Item1", "Item2", "Item3");
+        checkDifferentKindsOfSets();
 
-        // Attempting to modify the immutableList will throw UnsupportedOperationException
-//         immutableList.add("Item4"); // This will throw an exception
+        checkFailSafeIterator();
 
-//        System.out.println(immutableList);
+        List<String> immutableList = List.of("Item1", "Item2", "Item3");
+
+//         Attempting to modify the immutableList will throw UnsupportedOperationException
+         immutableList.add("Item4"); // This will throw an exception
+
+        System.out.println(immutableList);
 
 
     }
@@ -123,32 +123,35 @@ public class BuiltInMethods {
         System.out.println("LinkedHashSet Time (ns): \t" + linkedHashSetTime);
         System.out.println("TreeSet Time (ns): \t\t\t" + treeSetTime);
     }
-}
-class SharedCounter {
-    private int count = 0;
 
-    // Synchronized method ensures thread safety
-    public synchronized void increment() {
-        count++;
+
+    static class SharedCounter {
+        private int count = 0;
+
+        // Synchronized method ensures thread safety
+        public synchronized void increment() {
+            count++;
+        }
+
+        public int getCount() {
+            return count;
+        }
     }
 
-    public int getCount() {
-        return count;
+    static class Animal {
+        // Method in superclass
+        void speak() {
+            System.out.println("Animal speaks");
+        }
     }
-}
 
-class Animal {
-    // Method in superclass
-    void speak() {
-        System.out.println("Animal speaks");
+    static class Dog extends Animal {
+        // Overriding the speak method in the subclass
+        @Override
+        void speak() {
+            System.out.println("Dog barks");
+        }
     }
-}
 
-class Dog extends Animal {
-    // Overriding the speak method in the subclass
-    @Override
-    void speak() {
-        System.out.println("Dog barks");
-    }
-}
 
+}

@@ -3,7 +3,7 @@ package com.sheikhimtiaz.interview;
 import java.util.*;
 import java.util.List;
 
-public class monstarLabCodingTest {
+public class MonstarLabCodingTest {
 
     public static void run(){
         System.out.println("test");
@@ -28,9 +28,9 @@ public class monstarLabCodingTest {
         set.add(3);
         System.out.println(set);
 
-        new newThread();
+        new NewThread();
 
-        Thread thread = new Thread(new test());
+        Thread thread = new Thread(new Test());
         thread.start();
         System.out.println(thread.getState());
 
@@ -219,125 +219,127 @@ public class monstarLabCodingTest {
     public static void changeTheObject(Forecast forecast){
         forecast.temperature = 35;
     }
-}
 
-class ExTest{
-    public Integer divide(int a, int b){
-        try{
-            return a/b;
-        } finally {
-            System.out.println("Finally");
+
+    class ExTest{
+        public Integer divide(int a, int b){
+            try{
+                return a/b;
+            } finally {
+                System.out.println("Finally");
+            }
         }
     }
-}
 
-class Super{
-    private void foo(){
-        System.out.println("Super");
-    }
-}
-
-class SubClass extends Super{
-    public void foo(){
-        System.out.println("SubClass");
-    }
-}
-
-class Box{
-    int width;
-    int length;
-    int height;
-}
-
-class Person{
-    String name;
-
-    public Person(String name) {
-        this.name = name;
+    static class Super{
+        private void foo(){
+            System.out.println("Super");
+        }
     }
 
-    public String getName() {
-        return name;
+    static class SubClass extends Super{
+        public void foo(){
+            System.out.println("SubClass");
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-}
-
-interface printsHello{
-    static void hello(){
-        System.out.println("hello");
-    }
-}
-
-class Forecast{
-    public int temperature;
-    public int pressure;
-}
-
-abstract class Demo{
-    public int a;
-    void demo(){
-        a = 10;
-    }
-    abstract public void get();
-}
-
-class Test2 extends Demo{
-
-    @Override
-    final public void get() {
-        System.out.println("a = "+ a);
-    }
-}
-
-
-class newThread extends Thread{
-    newThread(){
-        super("My Thread");
-        start();
+    static class Box{
+        int width;
+        int length;
+        int height;
     }
 
-    public void run(){
-        System.out.println(this);
-    }
-}
+    static class Person{
+        String name;
 
-class test implements Runnable{
-    @Override
-    public void run() {
-        System.out.println("Turing");
-    }
-}
+        public Person(String name) {
+            this.name = name;
+        }
 
-abstract class Animal{
-    public abstract void makeNoise();
-    public abstract void move();
-}
+        public String getName() {
+            return name;
+        }
 
-abstract class Canine extends Animal{
-    public void wagTail(){
-        System.out.println("wagging");
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
     }
 
-    @Override
-    public void move(){
-        System.out.println("run");
-    }
-}
-
-class Dog extends Canine{
-
-    @Override
-    public void makeNoise() {
-        System.out.println("Bark");
+    interface printsHello{
+        static void hello(){
+            System.out.println("hello");
+        }
     }
 
-    public void fetch(){
-        System.out.println("Fetch");
+    static class Forecast{
+        public int temperature;
+        public int pressure;
+    }
+
+    static abstract class Demo{
+        public int a;
+        void demo(){
+            a = 10;
+        }
+        abstract public void get();
+    }
+
+    static class Test2 extends Demo{
+
+        @Override
+        final public void get() {
+            System.out.println("a = "+ a);
+        }
+    }
+
+
+    static class NewThread extends Thread{
+        NewThread(){
+            super("My Thread");
+            start();
+        }
+
+        public void run(){
+            System.out.println(this);
+        }
+    }
+
+    static class Test implements Runnable{
+        @Override
+        public void run() {
+            System.out.println("Turing");
+        }
+    }
+
+    abstract class Animal{
+        public abstract void makeNoise();
+        public abstract void move();
+    }
+
+    abstract class Canine extends Animal{
+        public void wagTail(){
+            System.out.println("wagging");
+        }
+
+        @Override
+        public void move(){
+            System.out.println("run");
+        }
+    }
+
+    class Dog extends Canine{
+
+        @Override
+        public void makeNoise() {
+            System.out.println("Bark");
+        }
+
+        public void fetch(){
+            System.out.println("Fetch");
+        }
+
     }
 }
