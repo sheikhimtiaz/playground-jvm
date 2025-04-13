@@ -3,7 +3,8 @@ package com.sheikhimtiaz.interview;
 import java.util.*;
 import java.util.List;
 
-public class MonstarLabCodingTest {
+//MonstarLabCodingTest
+public class SampleAAI {
 
     public static void run(){
         System.out.println("test");

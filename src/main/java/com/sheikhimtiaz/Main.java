@@ -2,7 +2,7 @@ package com.sheikhimtiaz;
 
 //import static org.junit.Assert.assertEquals;
 
-import com.sheikhimtiaz.interview.RecentJavaInterview;
+import com.sheikhimtiaz.interview.SampleAAR;
 
 public class Main {
     public static int num = 0;
@@ -13,7 +13,7 @@ public class Main {
 //    static {
 //        System.out.println("test");
 //    }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        Main main = new Main();
 //        System.out.println(main.val);
 //        if(num<3){
@@ -63,7 +63,9 @@ public class Main {
 
 //        LeetCode.run();
 
-        RecentJavaInterview.run();
+//        RecentJavaInterview.run();
+
+        SampleAAR.run();
 
 //        BracItInterview.run();
 

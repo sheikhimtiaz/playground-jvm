@@ -1,5 +1,6 @@
 package com.sheikhimtiaz.interview;
 
-public class GraphAlgo {
+//GraphAlgo
+public class SampleAAG {
 
 }

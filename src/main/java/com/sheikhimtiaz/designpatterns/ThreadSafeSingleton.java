@@ -1,10 +1,12 @@
 package com.sheikhimtiaz.designpatterns;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class ThreadSafeSingleton implements Serializable, Cloneable{
     // initialize the instance as null.
     private static ThreadSafeSingleton instance = null;
+//    private volatile ThreadSafeSingleton instance = null;
 
     // private constructor, so it cannot be instantiated outside this class.
     private ThreadSafeSingleton() {  }
@@ -20,9 +22,21 @@ public class ThreadSafeSingleton implements Serializable, Cloneable{
             }
         }
         return instance;
+
+
+//        if(instance == null) {
+//            synchronized (instance) {
+//                if(instance == null){
+//                    instance = new ThreadSafeSingleton();
+//                    return instance;
+//                }
+//                else return instance;
+//            }
+//        } else return instance;
     }
 
     // This method is called during deserialization to return the existing instance.
+    @Serial
     public Object readResolve() {
         return instance;
     }

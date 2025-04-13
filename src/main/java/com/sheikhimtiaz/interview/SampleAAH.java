@@ -1,6 +1,7 @@
 package com.sheikhimtiaz.interview;
 
-public class Micro1Interview {
+//Micro1Interview
+public class SampleAAH {
     public static void run() {
         System.out.println(exists(new int[][]{ new int[]{1,3,5,7},
                                             new int[]{10,11,16,20},

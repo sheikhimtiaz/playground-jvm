@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ToptalTest {
+//ToptalTest
+public class SampleAAM {
 
     static List<Integer> amicableTable = new ArrayList(Collections.nCopies(20000, 0));
     int[] amicableTable2 = new int[2000];

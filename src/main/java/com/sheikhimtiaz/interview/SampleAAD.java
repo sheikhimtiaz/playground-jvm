@@ -2,7 +2,8 @@ package com.sheikhimtiaz.interview;
 
 import java.util.*;
 
-public class CodilityDemo {
+//CodilityDemo
+public class SampleAAD {
 
 
     public static void run(){

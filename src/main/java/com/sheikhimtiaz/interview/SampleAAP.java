@@ -1,10 +1,9 @@
 package com.sheikhimtiaz.interview;
 
-import com.sheikhimtiaz.datatypes.LRUCache;
-
 import java.util.*;
 
-public class ZalandoPractice {
+//ZalandoPractice
+public class SampleAAP {
 
     public static void run() {
 //        System.out.println(findMaxStudentsToScheduleInDays(List.of("01","123", "01234456789","4","5","6", "5","5"), 2));

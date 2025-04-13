@@ -7,7 +7,8 @@ import java.util.List;
 //  tt**aasd*tt
 //  klnnlknlkaasaasd
 
-public class GraalVMInternship {
+//GraalVMInternship
+public class SampleAAF {
 
     public static void run(){
 //       write your code here

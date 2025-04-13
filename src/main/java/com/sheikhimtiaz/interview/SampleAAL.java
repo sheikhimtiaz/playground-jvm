@@ -1,10 +1,7 @@
 package com.sheikhimtiaz.interview;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class ReveSystems {
+//ReveSystems
+public class SampleAAL {
 
     public static void run(){
 

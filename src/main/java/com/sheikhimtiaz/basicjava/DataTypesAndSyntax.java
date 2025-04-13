@@ -36,7 +36,27 @@ public class DataTypesAndSyntax {
 //        FoobarChallenge.printArrayChar(chars2);
 
         checkPriorityQueue();
+
+
+
     }
+
+    // Replacing If-Else with Enums
+//    public double calculatePrice(CustomerType customerType, double basePrice) {
+//        if (customerType == CustomerType.REGULAR) {
+//            return basePrice;
+//        } else if (customerType == CustomerType.MEMBER) {
+//            return basePrice * 0.9;
+//        } else if (customerType == CustomerType.VIP) {
+//            return basePrice * 0.8;
+//        } else {
+//            throw new IllegalArgumentException("Unknown customer type");
+//        }
+//    }
+    public double calculatePrice(CustomerType customerType, double basePrice) {
+        return customerType.calculateDiscount(basePrice);
+    }
+
 
     private static void checkPriorityQueue() {
         PriorityQueue<Integer> pq = new PriorityQueue<>((x,y) -> y.compareTo(x));

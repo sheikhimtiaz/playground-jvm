@@ -1,13 +1,12 @@
 package com.sheikhimtiaz.interview;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 //import static org.junit.Assert.assertEquals;
 
-public class TuringTest {
+//TuringTest
+public class SampleAAN {
 
     public static void run() {
         double nth = Math.pow(625, 1.0 / 4.0);

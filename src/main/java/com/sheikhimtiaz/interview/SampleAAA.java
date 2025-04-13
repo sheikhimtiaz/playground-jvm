@@ -1,6 +1,7 @@
 package com.sheikhimtiaz.interview;
 
-public class bKashTest {
+//bKashTest
+public class SampleAAA {
 
     public static void run(){
 //        System.out.println("Works!");

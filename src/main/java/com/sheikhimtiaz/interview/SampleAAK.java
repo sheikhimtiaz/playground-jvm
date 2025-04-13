@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PrampPractice {
+//PrampPractice
+public class SampleAAK {
 
     public static void run() {
         Solution.BinarySearchTree bst = new Solution.BinarySearchTree();

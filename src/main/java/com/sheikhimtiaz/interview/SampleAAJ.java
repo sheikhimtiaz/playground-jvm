@@ -2,7 +2,8 @@ package com.sheikhimtiaz.interview;
 
 import java.util.*;
 
-public class OneItQues {
+//OneItQues
+public class SampleAAJ {
     public static void run(){
 //        wordCount("The fox, on the log");
 //        int[] testCases = {4, 5, 3};
